@@ -1,4 +1,4 @@
-import { Service, signal } from '@angular/core';
+import { computed, Service, Signal, signal } from '@angular/core';
 import { Transaction } from '../models/transaction';
 
 @Service()
@@ -6,6 +6,22 @@ export class Financial {
     private transactionState = signal<Transaction[]>(this.loadFromStorage());
 
     readonly transactions = this.transactionState.asReadonly();
+
+    totalIncome = computed(() => {
+        return this.transactions()
+        .filter((t) => t.type === 'Income')
+        .reduce((sum, t) => sum + t.amount, 0);
+    });
+
+    totalExpense = computed(() => {
+        return this.transactions()
+        .filter((t) => t.type === 'Expense')
+        .reduce((sum, t) => sum + t.amount, 0);
+    });
+
+    totalBalance = computed(() => (
+        this.totalIncome() - this.totalExpense()
+    ));
 
     addTransaction(nwTx : Transaction)
     {
