@@ -1,5 +1,5 @@
 export interface Transaction {
-  type : string,
+  type : 'Income' | 'Expense',
   amount : number,
   category : string,
   notes: string,
