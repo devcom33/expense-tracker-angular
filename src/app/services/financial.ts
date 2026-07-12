@@ -23,6 +23,39 @@ export class Financial {
         this.totalIncome() - this.totalExpense()
     ));
 
+    mostSpending = computed(() => {
+        const biggestExpense = this.transactions()
+            .filter((t) => t.type === 'Expense')
+            .reduce(
+                (maxTx, t) => (t.amount > maxTx.amount ? t : maxTx)
+            );
+        
+        return biggestExpense?.category ?? null;
+    });
+
+    expenseCategory = computed(() => {
+        const categoryMap = this.transactions()
+        .filter((t) => t.type === 'Expense' && t.category != 'Salary')
+        .reduce((acc, t) => {
+            acc[t.category] = (acc[t.category] ?? 0) + t.amount
+
+            return acc;
+        }, {} as Record<string, number>);
+
+        return Object.entries(categoryMap).map(([category, amount]) => ({
+            category,
+            amount
+        }));
+    });
+    
+/*
+    {
+        'housing': 1000,
+        'Food': 2000
+        'Entertinment':
+
+    }
+*/
     addTransaction(nwTx : Transaction)
     {
         this.transactionState.update(curr => {
