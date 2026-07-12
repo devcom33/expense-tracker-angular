@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { map } from 'rxjs';
 import { Financial } from '../../services/financial';
+import { Transaction } from '../../models/transaction';
 
 
 @Component({
@@ -14,9 +15,9 @@ import { Financial } from '../../services/financial';
 export class TransactionForm {
   private fg = inject(FormBuilder);
   financialService = inject(Financial);
-  
+
   transactionForm = this.fg.nonNullable.group({
-    type : ['Expense', Validators.required],
+    type : ['Expense' as Transaction['type'], Validators.required],
     amount : [0, Validators.required],
     category : ['Housing', Validators.required],
     notes: [''],
@@ -39,7 +40,7 @@ export class TransactionForm {
         notesControl?.clearValidators();
       }
 
-      // Forces Angular to run validation check on this control instantly
+      // run validation check on this control instantly
       notesControl?.updateValueAndValidity();
     }
       
