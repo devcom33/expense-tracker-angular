@@ -7,14 +7,10 @@ import { StatsSummary } from './components/stats-summary/stats-summary';
 export const routes: Routes = [
     {
         path: '',
-        component: DashboardShell
-    },
-    {
-        path: 'add-transaction',
-        component: TransactionForm
-    },
-    {
-        path: 'stats',
-        component: StatsSummary
+        component: DashboardShell,
+        children: [
+            { path: '', component: StatsSummary},
+            { path: 'add-transaction', component: TransactionForm}
+        ]
     }
 ];
