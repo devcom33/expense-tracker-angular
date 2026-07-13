@@ -5,10 +5,10 @@ An Angular expense tracking application built with Reactive Forms, Tailwind CSS,
 ## Screenshots
 
 ### Dashboard
-![Dashboard screenshot](/image_1.png)
+![Dashboard screenshot](/public/image_1.png)
 
 ### Add Transaction Form
-![Add transaction form screenshot](/image_2.png)
+![Add transaction form screenshot](/public/image_2.png)
 
 ## Features
 
