@@ -1,0 +1,13 @@
+<aside class="hidden md:block w-64 bg-white border-r border-gray-200 min-h-[calc(100vh-4rem)] p-4">
+    <nav class="space-y-2">
+    <a class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100" 
+    [routerLink]="['/']" 
+    routerLinkActive="bg-green-50 text-green-700 font-medium"
+    [routerLinkActiveOptions]="{ exact: true}"
+    >Dashboard</a>
+    <a class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100" [routerLink]="['/add-transaction']" routerLinkActive="bg-green-50 text-green-700 font-medium">Add Transaction</a>
+    <a class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100" href="#">Categories</a>
+    <a class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100" href="#">Reports</a>
+    <a class="block px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100" href="#">Settings</a>
+    </nav>
+</aside>
